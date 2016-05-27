@@ -13,56 +13,56 @@
 
 
 
-import re
-f=open('книга I.txt', 'r', encoding='utf-8')    #Открытие файла. Изменить название файла призапуске кода для другой книги
-fw=open('книга I.csv', 'w', encoding='utf-8')   #Создание csv-файла. Изменить название файла призапуске кода для другой книги
-s=f.read()  
-e=re.split('\[[0-9]*\]', s)              #разделение файла на пронумерованные секции (2-3 предложения) согласно формату текста
-p=1
-n=0
-v=[]
-u=1
-pp=[]
-for y in e:
-    ll=0
-    if y==e[0]:
-        continue
-    else:
-        print(p)
-        z=re.split(' [0-9]* ', y)     #разделение секций на предложение
-        for i in z:
-            pp.append(u)
-            u+=1
-        for l in z:
-            q=re.findall(' (?:A|a)b? [A-Za-z]*', l)
-            #qq=re.findall('Ab [A-Za-z]*', l)
-            #q=re.findall(' (?:A|a)b?) [A-Za-z]*', l)
-            if l==z[0]:
-                continue
-            else:
-                print(q)
-                #print(qq)
-                for t in q:
-                    v.append(t+' '+'1'+' ' +str(p)+' '+str(pp[ll])) #приписывание адресации к вхождению. 1-номер книги. Нужно изменять
-                    n+=1
-            ll+=1
-        p+=1
-print(n)
-print(v)
-print(len(v))
-for b in v:
-        o=re.search('ab [jyaeiuohAEIUOHYJ]', b)   #поиск вхождений алломорфа 'а' с лексемами на гласный или придыхательный [h]
-        if o:
-            fw.write(b + ';'+'ab v' + '\n')          #запись данных в csv-файл
-        y=re.search('ab [bcdfgklmnpqrstvwxzBCDFGKLMNPQRSTVWXZ]', b)        #поиск вхождений алломорфа с лексемами на согласный 
-        if y:
-            fw.write(b + ';'+'ab c'+ '\n')          #запись данных в csv-файл
-        rr=re.search('a [jyaeiuohAEIUOHYJ]', b)             #поиск вхождений алломорфа 'ab' с лексемами на гласный и [h]
-        if rr:
-            fw.write(b + ';'+ 'a v'+ '\n')          #запись данных в csv-файл
-        yy=re.search('a [bcdfgklmnpqrstvwxzBCDFGKLMNPQRSTVWXZ]',b)  #поиск вхождений алломорфа с лексемами на согласный
-        if yy:
-            fw.write(b + ';'+'a c'+ '\n')             #запись данных в csv-файл
-f.close()
-fw.close()
+    import re
+    f=open('книга I.txt', 'r', encoding='utf-8')    #Открытие файла. Изменить название файла призапуске кода для другой книги
+    fw=open('книга I.csv', 'w', encoding='utf-8')   #Создание csv-файла. Изменить название файла призапуске кода для другой книги
+    s=f.read()  
+    e=re.split('\[[0-9]*\]', s)              #разделение файла на пронумерованные секции (2-3 предложения) согласно формату текста
+    p=1
+    n=0
+    v=[]
+    u=1
+    pp=[]
+    for y in e:
+        ll=0
+        if y==e[0]:
+            continue
+        else:
+            print(p)
+            z=re.split(' [0-9]* ', y)     #разделение секций на предложение
+            for i in z:
+                pp.append(u)
+                u+=1
+            for l in z:
+                q=re.findall(' (?:A|a)b? [A-Za-z]*', l)
+                #qq=re.findall('Ab [A-Za-z]*', l)
+                #q=re.findall(' (?:A|a)b?) [A-Za-z]*', l)
+                if l==z[0]:
+                    continue
+                else:
+                    print(q)
+                    #print(qq)
+                    for t in q:
+                        v.append(t+' '+'1'+' ' +str(p)+' '+str(pp[ll])) #приписывание адресации к вхождению. 1-номер книги. 
+                        n+=1
+                ll+=1
+            p+=1
+    print(n)
+    print(v)
+    print(len(v))
+    for b in v:
+            o=re.search('ab [jyaeiuohAEIUOHYJ]', b)   #поиск вхождений алломорфа 'а' с лексемами на гласный или придыхательный [h]
+            if o:
+                fw.write(b + ';'+'ab v' + '\n')          #запись данных в csv-файл
+            y=re.search('ab [bcdfgklmnpqrstvwxzBCDFGKLMNPQRSTVWXZ]', b)        #поиск вхождений алломорфа с лексемами на согласный 
+            if y:
+                fw.write(b + ';'+'ab c'+ '\n')          #запись данных в csv-файл
+            rr=re.search('a [jyaeiuohAEIUOHYJ]', b)             #поиск вхождений алломорфа 'ab' с лексемами на гласный и [h]
+            if rr:
+                fw.write(b + ';'+ 'a v'+ '\n')          #запись данных в csv-файл
+            yy=re.search('a [bcdfgklmnpqrstvwxzBCDFGKLMNPQRSTVWXZ]',b)  #поиск вхождений алломорфа с лексемами на согласный
+            if yy:
+                fw.write(b + ';'+'a c'+ '\n')             #запись данных в csv-файл
+    f.close()
+    fw.close()
 
